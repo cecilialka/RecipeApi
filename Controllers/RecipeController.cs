@@ -33,16 +33,8 @@ public class RecipeController : ControllerBase
     [ProducesResponseType(404)]
     public async Task<ActionResult<List<Recipe>>> GetRandomRecipes([FromQuery] int number, [FromQuery] List<string> tags)
     {
-        try
-        {
-            var recipes = await _spoonacularService.GetRandomRecipes(number, tags);
-            return Ok(recipes);
-        }
-        catch (ItemNotFoundException ex)
-        {
-            return NotFound(ex.Message);
-        }
-
+        var recipes = await _spoonacularService.GetRandomRecipes(number, tags);
+        return Ok(recipes);
     }
 
     ///<summary>
@@ -56,16 +48,8 @@ public class RecipeController : ControllerBase
     [ProducesResponseType(404)]
     public async Task<ActionResult<Recipe>> GetRecipe(int id)
     {
-        try
-        {
-            var recipe = await _spoonacularService.GetRecipe(id);
-            return Ok(recipe);
-        }
-        catch (ItemNotFoundException ex)
-        {
-            return NotFound(ex.Message);
-        }
-
+        var recipe = await _spoonacularService.GetRecipe(id);
+        return Ok(recipe);
     }
 
     ///<summary>
